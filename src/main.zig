@@ -38,7 +38,7 @@ pub fn main() !void {
             const ready_socket = ready.data.fd;
             if (ready_socket == listener) {
                 const client_socket = try posix.accept(listener, null, null, posix.SOCK.NONBLOCK);
-                posix.close(client_socket);
+                errdefer posix.close(client_socket);
                 var event = linux.epoll_event{ .events = linux.EPOLL.IN, .data = .{ .fd = client_socket } };
                 try posix.epoll_ctl(fd, linux.EPOLL.CTL_ADD, client_socket, &event);
             } else {
