@@ -1,0 +1,9 @@
+# Zig build output
+zig-out/
+
+# Zig cache (optional, but usually safe to ignore)
+.zig-cache/
+
+# Editor/IDE files (adjust for your editor)
+.vscode/
+.idea/
